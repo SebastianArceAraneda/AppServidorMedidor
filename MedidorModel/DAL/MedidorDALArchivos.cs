@@ -82,5 +82,15 @@ namespace MedidorModel.DAL
             return ObtenerMedidor().FindAll(p => p.IdMedidor == nombre);
 
         }
+
+        public void AgregarMedidor(string medidor)
+        {
+            ((IMedidorDAL)instancia).AgregarMedidor(medidor);
+        }
+
+        public List<Medidor> ObtenerMedidores()
+        {
+            return ((IMedidorDAL)instancia).ObtenerMedidores();
+        }
     }
 }

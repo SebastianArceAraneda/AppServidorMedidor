@@ -12,5 +12,7 @@ namespace MedidorModel.DAL
         void AgregarMedidor(Medidor medidor);
         List<Medidor> ObtenerMedidor();
         List<Medidor> FiltrarMedidor(string nombre);
+        void AgregarMedidor(string medidor);
+        List<Medidor> ObtenerMedidores();
     }
 }

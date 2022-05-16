@@ -13,10 +13,9 @@ namespace MedidorModel.DTO
         private string consumo;
         private string fecha;
 
-
         public string Consumo { get => consumo; set => consumo = value; }
         public string Fecha { get => fecha; set => fecha = value; }
         public string IdMedidor { get => idMedidor; set => idMedidor = value; }
-
+        
     }
 }

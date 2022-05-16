@@ -41,7 +41,7 @@ namespace AppServidorMedidor.Comunicacion
             {
                 medidorDAL.AgregarMedidor(medidor);
             }
-            clienteCom.Escribir("OK ");
+            clienteCom.Escribir("OK.");
             clienteCom.Desconectar();
             }
             else
