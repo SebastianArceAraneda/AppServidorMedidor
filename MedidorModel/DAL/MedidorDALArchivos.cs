@@ -28,7 +28,7 @@ namespace MedidorModel.DAL
             return instancia;
         }
         
-        private static string archivo = url + "/medidor.txt";
+        private static string archivo = "/medidor.txt";
         
         private static string url = Directory.GetCurrentDirectory() + "/" + archivo;
 
