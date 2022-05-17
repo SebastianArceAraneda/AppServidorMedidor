@@ -38,11 +38,12 @@ namespace AppServidorMedidor
             }
             return continuar;
         }
-
+        
         static void Mostrar()
         {
             List<Medidor> medidores = null;
             lock (medidorDAL)
+                //thread safe
             {
                 medidores = medidorDAL.ObtenerMedidores();
             }

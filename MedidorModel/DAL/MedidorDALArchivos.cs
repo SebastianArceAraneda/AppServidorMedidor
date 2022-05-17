@@ -48,37 +48,7 @@ namespace MedidorModel.DAL
 
             }
         }
-        public List<Medidor> ObtenerMedidor()
-        {
-            List<Medidor> lista = new List<Medidor>();
-            try
-            {
-                using (StreamReader reader = new StreamReader(archivo))
-                {
-                    string texto = "";
-                    do
-                    {
-                        texto = reader.ReadLine();
-                        if (texto != null)
-                        {
-                            string[] arr = texto.Trim().Split(';');
-                            Medidor medidor = new Medidor()
-                            {
-                                IdMedidor = arr[0],
-                                Consumo = arr[1],
-                                Fecha = arr[2]
-                            };
-                            lista.Add(medidor);
-                        }
-                    } while (texto != null);
-                }
-            }
-            catch (Exception ex)
-            {
-                lista = null;
-            }
-            return lista;
-        }
+
         public List<Medidor> FiltrarMedidor(string nombre)
         {
             return ObtenerMedidores().FindAll(p => p.IdMedidor == nombre);
