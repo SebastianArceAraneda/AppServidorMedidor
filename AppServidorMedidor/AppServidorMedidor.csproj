@@ -53,13 +53,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CShap-AP-11--170-main\CShap-AP-11--170-main\EjercicioMensajero\ServidorSocketUtils\ServidorSocketUtils.csproj">
-      <Project>{48C487B5-927C-47F4-9C3C-05B3F9229C87}</Project>
-      <Name>ServidorSocketUtils</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MedidorModel\MedidorModel.csproj">
       <Project>{0EB7CB20-B967-4E13-BEFC-6D94825A2E3B}</Project>
       <Name>MedidorModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServidorSocketUtils\ServidorSocketUtils.csproj">
+      <Project>{48C487B5-927C-47F4-9C3C-05B3F9229C87}</Project>
+      <Name>ServidorSocketUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

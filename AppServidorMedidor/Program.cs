@@ -60,20 +60,43 @@ namespace AppServidorMedidor
             string consumo = Console.ReadLine().Trim();
             Console.WriteLine("Ingrese fecha :");
             string fecha = Console.ReadLine().Trim();
-            Medidor medidor1 = new Medidor()
+            bool Validar = BuscarMedidores(medidor);
+            if (Validar)
             {
-                IdMedidor = medidor,
-                Consumo = consumo,
-                Fecha = fecha
-            };
-            //nuestro proyecto es ThreadSafe que significa que nos hacemos cargo de la concurrencia
-            lock (medidorDAL)
+                Medidor medidor1 = new Medidor()
+                {
+                    IdMedidor = medidor,
+                    Consumo = consumo,
+                    Fecha = fecha
+                };
+                lock (medidorDAL)
+                {
+                    medidorDAL.AgregarMedidor(medidor1);
+                }
+                Console.WriteLine("Se agrego");
+            }
+            else
             {
-                medidorDAL.AgregarMedidor(medidor1);
+                Console.WriteLine("Medidor no encontrado");
             }
 
         }
 
+        static bool BuscarMedidores(string respuesta)
+        {
+            List<Medidor> filtrar = medidorDAL.FiltrarMedidor(respuesta);
+            bool codigo = false;
+            filtrar.ForEach(p => codigo = true);
+            if (codigo)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
 
         static void Main(string[] args)
             {

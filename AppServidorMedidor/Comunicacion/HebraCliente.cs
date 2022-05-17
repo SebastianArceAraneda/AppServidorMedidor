@@ -1,4 +1,5 @@
-﻿using MedidorModel.DAL;
+﻿
+using MedidorModel.DAL;
 using MedidorModel.DTO;
 using ServidorSocketUtils;
 using System;
@@ -28,7 +29,7 @@ namespace AppServidorMedidor.Comunicacion
             string consumo = clienteCom.Leer();
             clienteCom.Escribir("Ingrese fecha: ");
             string fecha = clienteCom.Leer();
-            bool Validar = BuscarMedidor(idMedidor);
+            bool Validar = BuscarMedidores(idMedidor);
             if (Validar)
             {
                 Medidor medidor = new Medidor()
@@ -42,6 +43,7 @@ namespace AppServidorMedidor.Comunicacion
                 medidorDAL.AgregarMedidor(medidor);
             }
             clienteCom.Escribir("OK.");
+            Console.WriteLine("Se agrego correctamente.");
             clienteCom.Desconectar();
             }
             else
@@ -53,11 +55,11 @@ namespace AppServidorMedidor.Comunicacion
 
         }
 
-        public bool BuscarMedidor(string respuesta)
+        public bool BuscarMedidores(string respuesta)
         {
-            List<Medidor> filtradas = medidorDAL.FiltrarMedidor(respuesta);
+            List<Medidor> filtrar = medidorDAL.FiltrarMedidor(respuesta);
             bool codigo = false;
-            filtradas.ForEach(p => codigo = true);
+            filtrar.ForEach(p => codigo = true);
             if (codigo)
             {
                 return true;

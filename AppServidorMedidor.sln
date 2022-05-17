@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppServidorMedidor", "AppSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedidorModel", "MedidorModel\MedidorModel.csproj", "{0EB7CB20-B967-4E13-BEFC-6D94825A2E3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServidorSocketUtils", "..\CShap-AP-11--170-main\CShap-AP-11--170-main\EjercicioMensajero\ServidorSocketUtils\ServidorSocketUtils.csproj", "{48C487B5-927C-47F4-9C3C-05B3F9229C87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServidorSocketUtils", "ServidorSocketUtils\ServidorSocketUtils.csproj", "{48C487B5-927C-47F4-9C3C-05B3F9229C87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

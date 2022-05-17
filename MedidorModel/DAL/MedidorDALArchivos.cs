@@ -27,17 +27,19 @@ namespace MedidorModel.DAL
             }
             return instancia;
         }
-
-        private static string url = Directory.GetCurrentDirectory();
-
+        
         private static string archivo = url + "/medidor.txt";
+        
+        private static string url = Directory.GetCurrentDirectory() + "/" + archivo;
+
+        
         public void AgregarMedidor(Medidor medidor)
         {
             try
             {
-                using (StreamWriter writer = new StreamWriter(archivo, true))
+                using (StreamWriter writer = new StreamWriter(url, true))
                 {
-                    writer.WriteLine(medidor.IdMedidor + ";" + medidor.Consumo + ";" + medidor.Fecha);
+                    writer.WriteLine(medidor.IdMedidor + ";" + medidor.Consumo + ";" + medidor.Fecha + ";");
                     writer.Flush();
                 }
             }
@@ -79,18 +81,44 @@ namespace MedidorModel.DAL
         }
         public List<Medidor> FiltrarMedidor(string nombre)
         {
-            return ObtenerMedidor().FindAll(p => p.IdMedidor == nombre);
+            return ObtenerMedidores().FindAll(p => p.IdMedidor == nombre);
 
         }
-
-        public void AgregarMedidor(string medidor)
-        {
-            ((IMedidorDAL)instancia).AgregarMedidor(medidor);
-        }
-
+        
         public List<Medidor> ObtenerMedidores()
         {
-            return ((IMedidorDAL)instancia).ObtenerMedidores();
+            List<Medidor> medidores = new List<Medidor>();
+            using (StreamReader reader = new StreamReader(url))
+            {
+                string texto;
+                do
+                {
+                    //Leer desde el archivo hasta que no haya nada
+                    texto = reader.ReadLine();
+                    if (texto != null)
+                    {
+                        string[] textoarr = texto.Trim().Split(';');
+                        string nombre = textoarr[0];
+                        string consumo = (textoarr[1]);
+                        string fecha = (textoarr[2]);
+                        //crear una persona
+                        Medidor p = new Medidor()
+                        {
+                            IdMedidor = nombre,
+                            Consumo = consumo,
+                            Fecha = fecha
+                        };
+
+                        medidores.Add(p);
+                    }
+
+                } while (texto != null);
+
+                //crear una persona
+                // calcule su IMC
+                // agregar a la lista
+            }
+            return medidores;
         }
     }
 }
